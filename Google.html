@@ -3,53 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Dark Mode</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Responsive Navbar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 10px 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin: 0 15px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #f4a261;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #333;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Top bar -->
-  <div class="top-bar">
-    <a href="#">About</a>
-    <a href="#">Store</a>
-    <a href="login.html"><button class="log-in-btn">Log In</button></a>
-  </div>
+  <nav>
+    <a href="#" class="logo">MyLogo</a>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </nav>
 
-  <!-- Google logo -->
-  <img
-    src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-    alt="Google Logo"
-    class="logo"
-    width="272"
-    height="92"
-  />
-
-  <!-- Search bar -->
-  <div class="search-container">
-    <form class="search-bar" action="https://www.google.com/search" method="GET" target="_blank">
-      <input type="text" name="q" placeholder="Search Google or type a URL" required />
-      <button type="submit">🔍</button>
-    </form>
-    <div class="button-container">
-      <button onclick="document.querySelector('.search-bar').submit()">Google Search</button>
-      <button onclick="window.open('https://www.google.com/doodles/', '_blank')">I'm Feeling Lucky</button>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <div class="footer-left">
-      <a href="#">Advertising</a>
-      <a href="#">Business</a>
-      <a href="#">How Search works</a>
-    </div>
-    <div class="footer-right">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Settings</a>
-    </div>
-  </div>
-
-  <p class="dark-mode-info">🌱 Our third decade of climate action: join us</p>
-
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
